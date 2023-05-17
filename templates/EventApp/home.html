@@ -1,0 +1,58 @@
+{% extends 'EventApp/base.html' %} {% load static %}
+
+<!-- custome title -->
+{% block title %}
+<title>Home page</title>
+{% endblock title %}
+
+<!-- custom css -->
+{% block css %}
+<style>
+  .heart {
+    color: rgb(226, 243, 237);
+    font-size: 30px;
+  }
+  .heart2 {
+    color: rgb(255, 12, 12);
+    font-size: 30px;
+  }
+</style>
+{% endblock css %}
+
+<!-- custom js -->
+{% block js %}
+<script>
+  function myFunction(x) {
+    document.getElementById("demo").innerHTML = '<p class="heart2">&hearts;<p>';
+  }
+</script>
+{% endblock js %}
+
+<div class="my-3">
+  {% block body %}
+
+
+  <div class="container text-center">
+    <div class="row">
+      {% for d in data %}
+
+      <div class="col-2 mb-3">
+        <div class="card" style="width: 13rem">
+          <div class="card-body">
+            <img src="{{d.image.url}}" alt="" height="100px" />
+            <h5 class="card-title">{{d.event_name}}</h5>
+
+            <p style="color: rgb(165, 0, 0)">{{d.date}}{{d.time}}</p>
+            <p>{{d.location}}</p>
+
+            <p onclick="myFunction()" id="demo" class="heart">&hearts;</p>
+          </div>
+        </div>
+      </div>
+
+      {% endfor %}
+    </div>
+  </div>
+
+  {% endblock body %}
+</div>

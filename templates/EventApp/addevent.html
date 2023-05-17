@@ -1,0 +1,38 @@
+{% extends 'EventApp/base.html' %}
+
+{% load static %}
+
+<!-- custome title -->
+{% block title %}
+<title>Event Registration Page</title>
+{% endblock title %}
+
+<!-- custom css -->
+{% block css %}
+
+{% endblock css %}
+
+<!-- custom js -->
+{% block js %}
+{% endblock js %}
+
+
+{% block body %}
+
+
+
+<div style="background-color: rgba(235, 215, 147, 0.312);" class="container w-50 shadow p-3 text-center">
+    <h2 class="rounded p-3 mb-3" style="background-color: rgba(255, 217, 0, 0.436);">Add Event</h2>
+    <form action="{% url 'addevent' %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {% for fm in forms %} 
+        <div class="mb-2">
+            {{fm.label_tag}}
+            {{fm}}
+        </div>
+        {% endfor %}
+        <button class="btn btn-success btn-lg" type="submit">Register Event</button>
+    </form>
+
+</div>
+{% endblock body %}
